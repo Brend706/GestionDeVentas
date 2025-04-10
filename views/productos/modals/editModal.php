@@ -20,7 +20,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="precio<?php echo $producto['ID_PRODUCT']; ?>" class="form-label">Precio</label>
-                        <input type="text" class="form-control" id="precio<?php echo $p['ID_PRODUCT']; ?>" name="precio" value="<?php echo $producto['PRECIO']; ?>">
+                        <input type="number" step="0.01" min="0" class="form-control" id="precio<?php echo $p['ID_PRODUCT']; ?>" name="precio" value="<?php echo $producto['PRECIO']; ?>">
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary">Guardar cambios</button>

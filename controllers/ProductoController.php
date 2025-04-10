@@ -11,6 +11,11 @@ class ProductoController{
         $this->productoModel = new ProductoModel();
     }
 
+    public function agregarProducto($nombre, $precio){
+        // Llamar al método del modelo para agregar el producto
+        return $this->productoModel->agregarProductos($nombre, $precio);
+    }
+
     public function obtenerProductos(){
         // Llamar al método del modelo para obtener los productos
         $productos = $this->productoModel->listarProductos();
@@ -20,7 +25,13 @@ class ProductoController{
 
     public function actualizarProducto($id, $codigo, $precio, $nombre){
         // Llamar al método del modelo para actualizar el producto
-        return $this->productoModel->actualizarProducto($id, $codigo, $precio, $nombre);
+        return $this->productoModel->actualizarProductos($id, $codigo, $precio, $nombre);
     }
+
+    public function eliminarProducto($id){
+        // Llamar al método del modelo para eliminar el producto
+        return $this->productoModel->eliminarProductos($id);
+    }
+
 }
 ?>

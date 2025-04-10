@@ -47,6 +47,8 @@ if (session_status() === PHP_SESSION_NONE) {
                     </tr>
                     <!-- se incluye el modal de edición -->
                     <?php include './modals/editModal.php'; ?>
+                    <!-- se incluye el modal de eliminación -->
+                    <?php include './modals/deleteModal.php'; ?>
                 <?php endforeach; ?>
             </tbody>
         </table>
@@ -54,16 +56,36 @@ if (session_status() === PHP_SESSION_NONE) {
     </div>
 </div>
 
+<!---- Modal para agregar producto ---->
+<?php include './modals/addModal.php'; ?>
+
 <?php if (isset($_SESSION['mensaje'])): ?>
 <script>
     Swal.fire({
         icon: '<?php echo $_SESSION['alerta']; ?>',
-        title: '<?php echo ($_SESSION['alerta'] == "success") ? "¡Éxito!" : "¡Error!"; ?>',
+        title: '<?php echo ($_SESSION['alerta'] == "success") ? "¡Éxito!" : "¡Advertencia!"; ?>',
         text: '<?php echo $_SESSION['mensaje']; ?>'
     });
 </script>
 <?php
     unset($_SESSION['mensaje']);
     unset($_SESSION['alerta']);
+endif;
+?>
+
+<?php if (isset($_SESSION['mensajeAgregar'])): ?>
+<script>
+    Swal.fire({
+        position: "top-end",
+        icon: '<?php echo $_SESSION['alertaAgregar']; ?>',
+        title: '<?php echo ($_SESSION['alertaAgregar'] == "success") ? "¡Éxito!" : "¡Advertencia!"; ?>',
+        text: '<?php echo $_SESSION['mensajeAgregar']; ?>',
+        showConfirmButton: false,
+        timer: 1500
+    });
+</script>
+<?php
+    unset($_SESSION['mensajeAgregar']);
+    unset($_SESSION['alertaAgregar']);
 endif;
 ?>
