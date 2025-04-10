@@ -1,5 +1,9 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+//var_dump($_SESSION);
+
     require_once('c:xampp/htdocs/ventas/views/head/header.php');
     require_once('c:xampp/htdocs/ventas/controllers/ProductoController.php');
     $productoController = new ProductoController();
@@ -42,7 +46,7 @@ session_start();
                         </td>
                     </tr>
                     <!-- se incluye el modal de edición -->
-                    <?php include 'modals/editModal.php'; ?>
+                    <?php include './modals/editModal.php'; ?>
                 <?php endforeach; ?>
             </tbody>
         </table>
@@ -60,6 +64,6 @@ session_start();
 </script>
 <?php
     unset($_SESSION['mensaje']);
-    unset($_SESSION['tipo']);
+    unset($_SESSION['alerta']);
 endif;
 ?>

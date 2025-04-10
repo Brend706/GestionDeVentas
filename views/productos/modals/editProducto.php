@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 require_once('c:xampp/htdocs/ventas/views/head/header.php');
 // Incluir el controlador de productos
 require_once('c:xampp/htdocs/ventas/controllers/ProductoController.php');
@@ -21,6 +22,11 @@ if($productoController->actualizarProducto($id, $codigo, $precio, $nombre)){
     $_SESSION['mensaje'] = "Error al actualizar el producto.";
     $_SESSION['alerta'] = "error";
 }
+
+echo '<pre>';
+var_dump($_SESSION);
+echo '</pre>';
+
 // Redirigir a la página de productos
 header("Location: ../verProductos.php");
 exit();

@@ -2,25 +2,22 @@
     require_once('c:xampp/htdocs/ventas/views/head/head.php');
 ?>
 
-<div class="navbar navbar-expand-lg navbar-light bg-light">
-    <ul class="nav nav-tabs" id="myTab" role="tablist">
-    <li class="nav-item" role="presentation">
-        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#verProductos" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Productos</button>
-    </li>
-    <li class="nav-item" role="presentation">
-        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Ventas</button>
-    </li>
-    <li class="nav-item" role="presentation">
-        <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">Inventario</button>
-    </li>
-    <li class="nav-item" role="presentation">
-        <button class="nav-link" id="disabled-tab" data-bs-toggle="tab" data-bs-target="#disabled-tab-pane" type="button" role="tab" aria-controls="disabled-tab-pane" aria-selected="false" disabled>Perfil</button>
-    </li>
-    </ul>
-   
-</div>
-<!-- se incluyen las vistas de productos, ventas e inventario -->
-<?php //include './views/productos/verProductos.php'; ?>
-<?php //include './views/ventas/verVentas.php'; ?>
-<?php //include './views/inventario/verInventario.php'; ?>    
-
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="../../index.php">Mis Ventas</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="./views/productos/verProductos.php">Productos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Ventas</a>
+        </li>
+       
+      </ul>
+    </div>
+  </div>
+</nav>
