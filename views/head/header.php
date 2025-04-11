@@ -11,12 +11,14 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="./views/productos/verProductos.php">Productos</a>
+          <a class="nav-link active" aria-current="page" href="/ventas/views/productos/verProductos.php">Productos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Ventas</a>
+          <a class="nav-link active" aria-current="page" href="/ventas/views/inventario/verInventario.php">Inventario</a>
         </li>
-       
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/ventas/views/ventas/verVentas.php">Ventas</a>
+        </li>
       </ul>
     </div>
   </div>

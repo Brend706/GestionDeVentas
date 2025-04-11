@@ -33,5 +33,30 @@ class ProductoController{
         return $this->productoModel->eliminarProductos($id);
     }
 
+    /*GESTION DE EXISTENCIAS
+    *
+    /
+    */
+    public function obtenerExistencias(){
+        // Llamar al método del modelo para obtener las existencias
+        return $this->productoModel->listarExistencias();
+    }
+
+    public function actualizarExistencia($id, $cantidad){
+        return $this->productoModel->actualizarExistencias($id, $cantidad);
+    }
+
+    public function agregarExistencia($id, $cantidad){
+        return $this->productoModel->agregarExistencias($id, $cantidad);
+    }
+
+    public function eliminarExistencia($id){
+        return $this->productoModel->eliminarExistencias($id);
+    }
+    /*FIN DE GESTION DE EXISTENCIAS
+    *
+    /
+    */
+
 }
 ?>

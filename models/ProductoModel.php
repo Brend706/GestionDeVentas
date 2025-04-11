@@ -94,6 +94,86 @@ class ProductoModel{
         } 
     }
 
+    /*METODOS PARA LA GESTION DE EXISTENCIAS - INVENTARIO
+    *
+    *
+    */
+    public function listarExistencias(){
+        // Consulta SQL para obtener todas las existencias
+        $consulta = "select e.ID_EXISTENCIA, p.NOMBRE as 'PRODUCTO', e.CANTIDAD, e.FECHA_ACTUALIZACION as 'ACTUALIZACION' from existencias as e INNER join productos p on e.ID_PRODUCT = p.ID_PRODUCT; ";
+        
+        $statement = $this->conectar->prepare($consulta);
+        $statement->execute();
+        // Obtener los resultados
+        $resultados = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $resultados;
+    }
+
+    public function actualizarExistencias($id, $cantidad ){
+
+        $query = "UPDATE existencias SET CANTIDAD = :cantidad WHERE ID_EXISTENCIA = :id";
+        $statement = $this->conectar->prepare($query);
+        $statement->bindParam(':cantidad', $cantidad);
+        $statement->bindParam(':id', $id);
+        try {
+            $statement->execute();
+            // Comprobar si se modificó alguna fila
+            if ($statement->rowCount() > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception $e) {
+            return false;
+        }
+    }
+
+    public function agregarExistencias($producto, $cantidad){
+        
+        $consulta = "INSERT INTO existencias (ID_PRODUCT, CANTIDAD) VALUES (:producto, :cantidad)";
+        // Preparar la consulta
+        $statement = $this->conectar->prepare($consulta);
+        // Vincular los parámetros
+        $statement->bindParam(':producto', $producto);
+        $statement->bindParam(':cantidad', $cantidad);
+        // Ejecutar la consulta
+        try {
+            $statement->execute();
+            // Comprobar si se insertó alguna fila
+            if ($statement->rowCount() > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception $e) {
+            return false;
+        } 
+    }
+
+    public function eliminarExistencias($id){
+        
+        $consulta = "DELETE FROM existencias WHERE ID_EXISTENCIA = :id";
+       
+        $statement = $this->conectar->prepare($consulta);
+        $statement->bindParam(':id', $id);
+        // Ejecutar la consulta
+        try {
+            $statement->execute();
+            if ($statement->rowCount() > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception $e) {
+            return false;
+        } 
+    }
+    /*fin de gestion de existencias
+    *
+    *
+    *
+    */
+
     //Metodos para asignarle un codigo a un producto
     function obtenerUltimoIdProducto() {
         // Consulta SQL para obtener el ID del último producto agregado
